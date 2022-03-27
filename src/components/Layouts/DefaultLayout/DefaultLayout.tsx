@@ -1,3 +1,4 @@
+import Footer from '../Footer';
 import Header from '../Header';
 
 interface DefaultLayoutPropTypes {
@@ -13,6 +14,7 @@ export default function DefaultLayout({
     <main className={className}>
       <Header />
       <section className="main-section">{children}</section>
+      <Footer />
     </main>
   );
 }

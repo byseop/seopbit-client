@@ -4,7 +4,7 @@ import palette from '@styles/palette';
 
 const StyledHeader = styled(Header)`
   .header-inner {
-    min-width: 1200px;
+    min-width: 1400px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,7 +16,7 @@ const StyledHeader = styled(Header)`
 
     ul {
       display: flex;
-      gap: 10px;
+      gap: 20px;
 
       li {
         a {

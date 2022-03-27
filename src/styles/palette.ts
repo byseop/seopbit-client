@@ -8,6 +8,9 @@ const palette = {
   },
   yellow: {
     primary: 'rgb(240, 185, 11)'
+  },
+  grey: {
+    primary: 'rgb(132, 142, 156)'
   }
 };
 
