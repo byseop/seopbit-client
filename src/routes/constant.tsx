@@ -5,7 +5,10 @@ import Home from '@components/Home';
 const routes: PathRouteProps[] = [
   {
     path: '/home',
-    element: Home()
+    element: <Home />
+  },
+  {
+    path: '/exchange'
   }
 ];
 
