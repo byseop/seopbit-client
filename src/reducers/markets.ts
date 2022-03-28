@@ -1,7 +1,8 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { upbitApi } from '@src/api/upbit';
 import type { MarketCode } from '@src/types/upbit';
+import { RootReducerTypes } from '.';
 
 interface State {
   data: MarketCode[] | null;
@@ -20,7 +21,9 @@ const initialState: State = {
 export const fetchMarkets = createAsyncThunk(
   'markets/getMarkets',
   async (_, { getState, requestId }) => {
-    const { loading, requestId: curRequestId } = (getState as any)()['markets'];
+    const { loading, requestId: curRequestId } = (
+      getState() as RootReducerTypes
+    )['markets'];
     if (!loading || requestId !== curRequestId) return;
     try {
       const response = await axios.request(upbitApi.getAllMarket);
@@ -38,11 +41,7 @@ export const fetchMarkets = createAsyncThunk(
 const marketSlice = createSlice({
   name: 'markets',
   initialState,
-  reducers: {
-    updateMarkets: (state, action: PayloadAction<MarketCode[]>) => {
-      state.data = action.payload;
-    }
-  },
+  reducers: {},
   extraReducers: {
     [fetchMarkets.pending.type]: (state, action) => {
       state.loading = true;
