@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import useRootState from './useRootState';
-import { Ticker } from '@src/types/upbit';
+import { MarketCode, Ticker } from '@src/types/upbit';
 
 export type Tickers = {
-  [key: string]: Ticker;
+  [key: string]: Ticker & MarketCode;
 };
 
 export default function useRealtimeTickers(currency: string = 'KRW') {
@@ -32,7 +32,12 @@ export default function useRealtimeTickers(currency: string = 'KRW') {
         const ticker: Ticker = JSON.parse(await new Response(data).text());
         setTickers((prev) => ({
           ...prev,
-          [ticker.code]: ticker
+          [ticker.code]: {
+            ...ticker,
+            ...(markets.data?.find(
+              (m) => m.market === ticker.code
+            ) as MarketCode)
+          }
         }));
       };
 

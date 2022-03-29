@@ -1,4 +1,6 @@
 import useRealtimeTickers from '@src/utils/hooks/useRealtimeTickers';
+import HomeSummary from '@components/Home/HomeSummary';
+import HomeTable from '@components/Home/HomeTable';
 
 interface HomePropTypes {
   className?: string;
@@ -6,6 +8,10 @@ interface HomePropTypes {
 
 export default function Home({ className }: HomePropTypes) {
   const tickers = useRealtimeTickers();
-  console.log(tickers);
-  return <div>123</div>;
+  return (
+    <div className="home">
+      <HomeSummary />
+      <HomeTable tickers={tickers} />
+    </div>
+  );
 }

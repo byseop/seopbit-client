@@ -16,6 +16,13 @@ const GlobalStyles = createGlobalStyle`
     color: ${palette.white.primary};
     background: ${palette.black.primary}
   }
+
+  .color-RISE {
+    color: #0ECB81
+  }
+  .color-FALL {
+    color: #F6465D
+  }
 `;
 
 export default GlobalStyles;
